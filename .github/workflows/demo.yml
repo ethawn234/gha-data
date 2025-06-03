@@ -25,6 +25,15 @@ jobs:
         run: npm ci
       - name: Build website
         run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo_build_artifact # optional name of artifact to upload; defaults to 'artifact'
+          path: dist
+          # path: |
+            # dist # output folder containing generated build assets
+            # package.json # includes specific file
+          if-no-files-found: error
   deploy:
     needs: build
     runs-on: ubuntu-latest
