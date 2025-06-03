@@ -43,6 +43,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
       - name: List app dir
         run: ls
       - name: Echo output var script
