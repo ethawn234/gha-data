@@ -1,4 +1,4 @@
-name: Output info between jobs
+name: Use pre-commit
 
 on:
   workflow_dispatch:

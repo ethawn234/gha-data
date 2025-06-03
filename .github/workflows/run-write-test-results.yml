@@ -1,4 +1,4 @@
-name: Events Demo 1
+name: run & write test results
 on: [push, workflow_dispatch]
 jobs:
   setup_env:

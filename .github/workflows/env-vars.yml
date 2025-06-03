@@ -1,4 +1,4 @@
-name: Deployment
+name: Use env-vars
 on:
   push:
     branches:
