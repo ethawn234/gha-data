@@ -46,7 +46,7 @@ jobs:
       - name: Get build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: dist-files
+          name: dist
       - name: List app dir
         run: ls
       - name: Echo output var script
