@@ -1,5 +1,5 @@
 name: run & write test results
-on: [push, workflow_dispatch]
+on: workflow_dispatch
 jobs:
   setup_env:
     runs-on: ubuntu-latest

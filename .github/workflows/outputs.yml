@@ -1,16 +1,16 @@
 name: Output info between jobs
-
-on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: "name of the person"
-        default: "Noman"
-        type: string
-        required: false
-  pull_request:
-    branches: 
-      - main
+on: workflow_dispatch
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       name:
+#         description: "name of the person"
+#         default: "Noman"
+#         type: string
+#         required: false
+#   pull_request:
+#     branches: 
+#       - main
 
 jobs:
   job1:
