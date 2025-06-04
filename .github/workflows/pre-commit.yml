@@ -16,7 +16,6 @@ jobs:
 
       - run: |
           echo "pre-commit" > requirements.txt
-          where python
     
       - name: Setup Python
         uses: actions/setup-python@v5
