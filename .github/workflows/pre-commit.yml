@@ -16,6 +16,7 @@ jobs:
 
       - run: |
           echo "pre-commit" > requirements.txt
+          where python
     
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -23,17 +24,16 @@ jobs:
           python-version: '3.13'
           cache: pip
 
+      - name: Install pre-commit
+        run: |
+          pip install pre-commit
+          pre-commit install
+
       - name: Validations
         run: |
           echo '${{ toJson(runner) }}'
           python3 --version
           pip --version
-
-      - name: Install pre-commit
-        run: |
-          pip install pre-commit
-          pre-commit --version
-          pre-commit install
           pre-commit --version
       
       - name: Run pre-commit
