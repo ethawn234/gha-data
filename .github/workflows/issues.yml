@@ -1,5 +1,5 @@
 name: check issues
-on: 
+on:
   issues:
     types: [opened, edited]
 jobs:
@@ -13,5 +13,5 @@ jobs:
           ISSUE_EVENT_BODY: ${{ github.event.issue.body }}
           # double quote sh cmd's to avoid problems like whitespace
         run: |
-          echo "$ISSUE_EVENT_TITLE" 
+          echo "$ISSUE_EVENT_TITLE"
           echo "$ISSUE_EVENT_BODY"

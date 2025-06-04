@@ -41,6 +41,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |        
+        run: |
           echo $DB_USERNAME
           echo $MONGODB_DB_NAME
