@@ -21,15 +21,14 @@ jobs:
       - run: python3 --version
 
       - name: Echo OS
-        run: echo ${{ runner.os }}
+        run: echo ${{ toJson(runner) }}
       
-      - name: Install pip
-        run: python3 install pip
+      - name: Check pip
+        run: echo pip --version
 
       - name: Install & Run pre-commit
         run: |
           pip install pre-commit
-          echo pip --version
           echo pre-commit --version
 
       # - name: Cache dependencies
