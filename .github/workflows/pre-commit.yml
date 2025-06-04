@@ -18,20 +18,18 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - run: python3 --version
-
-      - name: Echo runner context
-        run: echo '${{ toJson(runner) }}'
-      
-      - name: Check pip
-        run: pip --version
+          cache: pip
+          
+      - name: Validations
+        run: |
+          echo '${{ toJson(runner) }}'
+          python3 --version
+          pip --version
 
       - name: Install & Run pre-commit
         run: |
           pip install pre-commit
           pre-commit --version
-
-      # - name: Cache dependencies
-      #   uses: actions/cache@v4
-      #   with:
-      #     path:
+          pre-commit install
+          pre-commit run --all-files
+          
