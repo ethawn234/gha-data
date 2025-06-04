@@ -29,9 +29,12 @@ jobs:
           python3 --version
           pip --version
 
-      - name: Install & Run pre-commit
+      - name: Install pre-commit
         run: |
           pip install pre-commit
           pre-commit --version
           pre-commit install
-          pre-commit run --all-files
+          pre-commit --version
+      
+      - name: Run pre-commit
+        run: pre-commit run --all-files
