@@ -10,7 +10,7 @@ jobs:
       - id: foo
         uses: ethawn234/demo-composite-action@main
         with:
-          who-to-greet: 'Moana the Octocat'
+          who-to-greet: "Moana the Octocat"
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
         env:

@@ -51,8 +51,8 @@ jobs:
           name: demo_build_artifact # optional name of artifact to upload; defaults to 'artifact'
           path: dist
           # path: |
-            # dist # output folder containing generated build assets
-            # package.json # includes specific file
+          # dist # output folder containing generated build assets
+          # package.json # includes specific file
           if-no-files-found: error
   deploy:
     needs: build
