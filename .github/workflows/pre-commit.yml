@@ -13,8 +13,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # - run: |
-      #     echo "pre-commit" > requirements.txt
+      - run: |
+          echo "pre-commit" > requirements.txt
 
       - name: Setup Python
         uses: actions/setup-python@v5
