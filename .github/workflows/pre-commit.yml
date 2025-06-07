@@ -39,5 +39,6 @@ jobs:
 
       - name: Run pre-commit
         run: |
+          pwd
           pre-commit run --all-files
           pre-commit run --all-files
