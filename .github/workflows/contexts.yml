@@ -1,6 +1,6 @@
 name: Access & Output Contexts
 
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 
 jobs:
   runnerContext:
