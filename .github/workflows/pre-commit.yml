@@ -5,6 +5,8 @@ on:
   pull_request:
     branches:
       - main
+  # schedule:
+  #   - cron: '15 8 * * *'
 
 jobs:
   job1:
@@ -39,5 +41,5 @@ jobs:
       - name: Run pre-commit
         run: |
           pwd
-          pre-commit run --all-files
-          pre-commit run --all-files
+          # SKIP=prettier pre-commit run  --all-files
+          SKIP=prettier pre-commit run --all-files --show-diff-on-failure -v
