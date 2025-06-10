@@ -28,6 +28,12 @@ jobs:
 
       - name: Install pre-commit
         run: |
+          echo "BEFORE pip config list:"
+          pip3 config list
+          echo -e "\npip install verbose output:"
+          pip3 install --upgrade pip --verbose | grep -iE 'using|index'
+          echo "AFTER pip config list:"
+          pip3 config list
           pip3 install pre-commit
           pre-commit install
 
