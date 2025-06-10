@@ -5,6 +5,7 @@ on: workflow_dispatch
 #     branches:
 #       - main
 #       - dev
+
 env: # workflow level env vars
   MONGODB_DB_NAME: gha-demo
 
@@ -13,9 +14,9 @@ jobs:
     env: # job level env vars
       DB_NAME: someDB
       DB_USERNAME: ethawn234
-      DB_PASSWORD: sa;oeirj
+      DB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 4009
-    environment: testing
+    environment: testing # corresponds to the environment configured in remote repo site; references to secrets|variables will reference testing env vars
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
