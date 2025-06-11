@@ -17,4 +17,4 @@ jobs:
         run: npm ci
       - name: jq '.key' example.json
         run: |
-          jq '.name' example.json
+          jq '.name' ./src/example.json
