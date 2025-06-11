@@ -1,0 +1,10 @@
+name: jq syntax exploration
+on: workflow_dispatch
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: jq '.key' example.json
+        run: |
+          jq '.key' example.json
