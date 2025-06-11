@@ -15,6 +15,6 @@ jobs:
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-      - name: jq '.key' example.json
+      - name: jq '.key' example.json # prints value at specfied key
         run: |
-          jq '.private' ./src/example.json
+          jq '.scripts' ./src/example.json
