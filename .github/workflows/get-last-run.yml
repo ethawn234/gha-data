@@ -2,11 +2,38 @@ name: get-last-run.yml
 on: [workflow_dispatch, push]
 
 jobs:
-  last-run:
+  get-last-run:
     runs-on: ubuntu-latest
+    outputs:
+      last_status: ${{ steps.last_status.outputs.last_status }}
+
     steps:
-      - name: Get previous workflow status
-        uses: Mercymeilya/last-workflow-status@v0.3.3
+      - name: Get branch name
+        shell: bash
+        run: |
+          if [[ ${GITHUB_EVENT_NAME} == "pull_request" ]]
+          then
+            echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF})" >> $GITHUB_ENV
+            echo "Branch name: ${GITHUB_HEAD_REF}"
+          else
+            echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+            echo "Branch name: ${GITHUB_REF#refs/heads/}"        
+          fi
+      - name: Get workflow id
+        shell: bash
+        run: |
+          WORKFLOW_ID=$(curl --header 'authorization: Bearer ${{ secrets.demoToken }}' \
+                            --header 'content-type: application/json' \
+          ${{ github.api_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }} | jq -r .workflow_id)
+          echo "WORKFLOW_ID=$WORKFLOW_ID" >> $GITHUB_ENV
+          echo "Workflow id: ${WORKFLOW_ID}"
+      - name: Get previous build status
+        shell: bash
         id: last_status
-        with:
-          github_token: ${{ secrets.demoToken }}
+        run: |
+          last_status=$(curl --silent --header 'authorization: Bearer ${{ inputs.github_token }}' \
+                                      --header 'content-type: application/json' \
+          "${{ github.api_url }}/repos/${{ github.repository }}/actions/workflows/${{ env.WORKFLOW_ID }}/runs?per_page=1&status=completed&branch=${{ env.BRANCH_NAME }}" \
+          | jq -r .workflow_runs[0].conclusion)
+          echo "last_status=$last_status" >> $GITHUB_OUTPUT
+          echo "Status of the previous build: $last_status"
