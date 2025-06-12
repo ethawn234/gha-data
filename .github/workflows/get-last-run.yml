@@ -11,7 +11,7 @@ jobs:
       - name: Get branch name
         shell: bash
         run: |
-          if [[ ${GITHUB_EVENT_NAME} == "push" ]]
+          if [[ ${GITHUB_EVENT_NAME} == "pull_request" ]]
           then
             echo "BRANCH_NAME=$(echo ${GITHUB_HEAD_REF})" >> $GITHUB_ENV
             echo "Branch name: ${GITHUB_HEAD_REF}"
@@ -22,6 +22,9 @@ jobs:
       - name: Get workflow id
         shell: bash
         run: |
+          echo -e "api_url: ${{ github.api_url }}"
+          echo -e "repository: ${{ github.repository }}"
+          echo -e "run_id: ${{ github.run_id }}"
           WORKFLOW_ID=$(curl --header 'authorization: Bearer ${{ secrets.demoToken }}' \
                             --header 'content-type: application/json' \
           ${{ github.api_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }} | jq -r .workflow_id)
