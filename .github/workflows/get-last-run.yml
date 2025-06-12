@@ -21,8 +21,8 @@ jobs:
           fi
       - name: Get workflow id
         shell: bash
-        env:
-          REPOSITORY: "gha-data"
+        # env:
+        #   REPOSITORY: "gha-data"
           
         run: |
           echo -e "api_url: ${{ github.api_url }}"
@@ -30,8 +30,9 @@ jobs:
           echo -e "run_id: ${{ github.run_id }}"
           
           WORKFLOW_ID=$(curl --header "authorization: Bearer ${{ secrets.demoToken }}" \
-                            --header "content-type: application/json" \
-          "${{ github.api_url }}/repos/${{ env.REPOSITORY }}/actions/runs/${{ github.run_id }}" | jq -r .workflow_id)
+          --header "content-type: application/json" \
+          "${{ github.api_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+          | jq -r .workflow_id)
 
           echo "WORKFLOW_ID=$WORKFLOW_ID" >> $GITHUB_ENV
           echo "Workflow id: ${WORKFLOW_ID}"
