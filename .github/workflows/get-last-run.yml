@@ -29,7 +29,7 @@ jobs:
           echo -e "repository: ${{ github.repository }}"
           echo -e "run_id: ${{ github.run_id }}"
           
-          WORKFLOW_ID=$(curl --header "authorization: Bearer ${{ secrets.demoToken }}" \
+          WORKFLOW_ID=$(curl --header "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           --header "content-type: application/json" \
           "${{ github.api_url }}/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
           | jq -r .workflow_id)
@@ -41,13 +41,10 @@ jobs:
         shell: bash
         id: last_status
         run: |
-          last_status=$(curl --silent --header "authorization: Bearer ${{ secrets.demoToken }}" \
+          last_status=$(curl --silent --header "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           --header "content-type: application/json" \
           "${{ github.api_url }}/repos/${{ github.repository }}/actions/workflows/${{ env.WORKFLOW_ID }}/runs?per_page=1&status=success&branch=${{ env.BRANCH_NAME }}" \
           | jq -r .workflow_runs[0].conclusion)
           
           echo "last_status=$last_status" >> $GITHUB_OUTPUT
           echo "Status of the previous build: $last_status"
-
-
-
