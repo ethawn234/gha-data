@@ -3,6 +3,7 @@ on: [workflow_dispatch, push]
 
 jobs:
   get-last-run:
+    environment: testing
     runs-on: ubuntu-latest
     outputs:
       last_status: ${{ steps.last_status.outputs.last_status }}
