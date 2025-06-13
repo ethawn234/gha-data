@@ -2,16 +2,17 @@ name: Check last build on main
 on: workflow_dispatch
 jobs:
   getLastBuild:
+    environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
       - name: Check last build
         run: |
-          response=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          response=$(curl -s -H "Authorization: token ${{ secrets.demoToken }}" \
             "https://api.github.com/repos/${{ github.repository }}/actions/runs?branch=main&status=completed&per_page=1")
 
-          echo -e "Response: $response"
+          echo -e "\nRESPONSE: $response \nREPOSITORY: ${{github.repository}}"
 
           conclusion=$(echo "$response" | jq -r '.workflow_runs[0].conclusion')
           url=$(echo "$response" | jq -r '.workflow_runs[0].html_url')
