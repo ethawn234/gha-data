@@ -3,10 +3,6 @@ on: [workflow_dispatch, push]
 
 jobs:
   test_matrix:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-
     name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
@@ -15,3 +11,6 @@ jobs:
           echo "I am farmer"
           echo "${{ toJson(runner) }}"
 
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
