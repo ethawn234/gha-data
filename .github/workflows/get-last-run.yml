@@ -1,5 +1,5 @@
 name: get-last-run.yml
-on: [workflow_dispatch, push]
+on: workflow_dispatch
 
 jobs:
   get-last-run:
