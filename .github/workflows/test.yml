@@ -12,4 +12,4 @@ jobs:
         with:
           token: "${{ secrets.demoToken }}"
           branch: "main"
-          workflow: "validate-last-build-success"
+          workflow: "Check last build on main"
