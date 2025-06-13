@@ -27,7 +27,7 @@ jobs:
             echo "Last build on main was successful: $url"
           fi
   validate_get_last_build_wf:
-    needs: get_last_build
+    # needs: get_last_build
     environment: testing
     runs-on: ubuntu-latest
     steps:
