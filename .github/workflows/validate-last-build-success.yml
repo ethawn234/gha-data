@@ -1,7 +1,7 @@
 name: Check last build on main
 on: workflow_dispatch
 jobs:
-  getLastBuild:
+  get_last_build:
     environment: testing
     runs-on: ubuntu-latest
     steps:
