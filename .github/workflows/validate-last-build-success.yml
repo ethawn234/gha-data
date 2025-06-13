@@ -17,6 +17,9 @@ jobs:
           conclusion=$(echo "$response" | jq -r '.workflow_runs[0].conclusion')
           url=$(echo "$response" | jq -r '.workflow_runs[0].html_url')
 
+          echo -e "Intentionally failing conclusion with current value: $conclusion"
+          conclusion = fail          
+
           if [ "$conclusion" != "success" ]; then
             echo "Last build failed or was not successful: $url"
             exit 1
