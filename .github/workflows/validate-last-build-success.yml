@@ -30,6 +30,7 @@ jobs:
           fi
   validate_get_last_build_wf:
     needs: get_last_build
+    if: always()
     environment: testing
     runs-on: ubuntu-latest
     steps:
