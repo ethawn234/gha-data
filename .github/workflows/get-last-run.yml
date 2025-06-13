@@ -9,6 +9,8 @@ jobs:
       last_status: ${{ steps.last_status.outputs.last_status }}
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
       - name: Get branch name
         shell: bash
         run: |
