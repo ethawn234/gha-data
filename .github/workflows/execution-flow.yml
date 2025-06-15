@@ -87,10 +87,14 @@ jobs:
       - name: echo  -e "report failure report"
         run: echo -e "report failure report"
 
+  # Still runs even though notifiy only needs the deploy job, which is skipped due to the test job failure
+  # Why? A status of 'skipped'  counts as a failure-related state, and so here failure() returns true
   notify:
     runs-on: ubuntu-latest
     needs: deploy  # ❌ Only has access to deploy's result
     if: ${{ failure() }}  # Only evaluates failure of deploy
     steps:
       - name: notify
-        run: echo  -e "notify failure report"
+        run: |
+          echo  -e "notify failure report"
+          echo  -e "\n\tValidating notify job runs due to deploy job being skipped, not because deploy.result == 'failure':\n\t\t${{ needs.deploy.result }}"
