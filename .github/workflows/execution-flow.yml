@@ -97,4 +97,4 @@ jobs:
       - name: notify
         run: |
           echo  -e "notify failure report"
-          echo  -e "\n\tValidating notify job runs due to deploy job being skipped, not because deploy.result == 'failure':\n\t\t${{ needs.deploy.result }}"
+          echo  -e "\n\tValidating notify job runs due to deploy job being skipped, not because deploy.result == 'failure': ${{ needs.deploy.result }}"
