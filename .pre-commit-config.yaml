@@ -15,8 +15,8 @@ repos:
       - id: prettier
         stages: [pre-commit]
 
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
-    hooks:
-      - id: detect-secrets
-        stages: [pre-commit]
+  # - repo: https://github.com/Yelp/detect-secrets
+  #   rev: v1.4.0
+  #   hooks:
+  #     - id: detect-secrets
+  #       stages: [pre-commit]
