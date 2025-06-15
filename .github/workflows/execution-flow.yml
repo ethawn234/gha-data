@@ -38,7 +38,7 @@ jobs:
         id: run-tests
         run: npm run test
       - name: Upload test report
-        if: steps.run-tests.outcome == 'failure' # the if field does not need ${{}} syntax as expressions are expected; can be hardcoded
+        if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-report
