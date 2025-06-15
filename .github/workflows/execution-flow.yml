@@ -97,7 +97,10 @@ jobs:
     if: failure()  # Only evaluates failure of deploy
     steps:
       - name: notify
+        id: notify-step
         run: |
           echo  -e "notify failure report"
           echo  -e "\nValidating notify job runs due to deploy job being skipped, not because deploy.result == 'failure': ${{ needs.deploy.result }}"
-          echo  -e "\nAlternative syntax to output deploy status. failure() && steps.deploy.conclusion: $steps.deploy.conclusion"
+      - name: use .conclusion
+        run: |
+          echo  -e "\nAlternative syntax to output deploy status. failure() && steps.deploy.conclusion: $steps.notify-step.conclusion"
