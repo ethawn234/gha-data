@@ -19,7 +19,7 @@ jobs:
           echo -e "\nRESPONSE: $response \nREPOSITORY: ${{github.repository}}"
 
           conclusion=$(echo "$response" | jq -r '.workflow_runs[0].conclusion')
-          url=$(echo "$response" | jq -r '.workflow_runs[0].html_url') 
+          url=$(echo "$response" | jq -r '.workflow_runs[0].html_url')
 
           if [ "$conclusion" != "success" ]; then
             echo "Last build failed or was not successful: $url"

@@ -1,10 +1,10 @@
 name: execution-flow
-on: 
+on:
   workflow_dispatch:
   push:
     branches:
       - execution-control
-jobs: 
+jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
