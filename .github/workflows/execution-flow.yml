@@ -83,7 +83,7 @@ jobs:
   
   report:
     runs-on: ubuntu-latest
-    needs: [build, test, deploy]
+    needs: [lint, deploy] # report job runs if any previous jobs fail; includes any job failure in deploy's job dependency chain
     if: failure()
     steps:
       - name: echo  -e "report failure report"
