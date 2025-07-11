@@ -14,3 +14,5 @@ jobs:
           workflow: Check last build on main
       - name: My Extra Step
         run: echo Hello
+      - name: My Extra Step
+        run: echo Hello
