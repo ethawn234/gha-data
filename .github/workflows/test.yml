@@ -12,5 +12,3 @@ jobs:
           token: ${{ secrets.demoToken }}
           branch: main
           workflow: Check last build on main
-      - name: My Extra Step
-        run: echo Hello
