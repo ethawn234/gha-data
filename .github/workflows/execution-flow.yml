@@ -1,9 +1,9 @@
 name: execution-flow
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - execution-control
+  # push:
+  #   branches:
+  #     - execution-control
 jobs:
   lint:
     runs-on: ubuntu-latest
