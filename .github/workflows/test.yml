@@ -1,16 +1,16 @@
 name: ci
-on:
+'on':
   push:
     branches:
-    - '**'
+      - '**'
     paths-ignore:
-    - .github/workflows/**
-    - '**.md'
-  workflow_dispatch:
+      - .github/workflows/**
+      - '**.md'
+  workflow_dispatch: null
 jobs:
   ci:
-    uses:
-      actions/cache@v3
+    uses: actions/cache@v3
     with:
-      branch: "develop"
+      branch: develop
+      code-qual: true
     secrets: inherit
