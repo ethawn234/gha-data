@@ -11,5 +11,3 @@ jobs:
   ci:
     uses: actions/cache@v3
     secrets: inherit
-    with:
-      code-qual: true
